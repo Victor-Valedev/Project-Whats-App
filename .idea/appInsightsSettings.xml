@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.victor.projectwhatsapp" />
+                  <option name="mobileSdkAppId" value="1:169097433001:android:7951378219198e89e23eb8" />
+                  <option name="projectId" value="project-whats-app-1b406" />
+                  <option name="projectNumber" value="169097433001" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
