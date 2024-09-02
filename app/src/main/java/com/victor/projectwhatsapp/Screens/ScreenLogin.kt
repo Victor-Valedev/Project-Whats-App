@@ -21,6 +21,7 @@ class ScreenLogin : AppCompatActivity() {
 
         //Mudando tema do App
         binding.buttonTema.setOnCheckedChangeListener{ _, isChecked ->
+
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }else{
