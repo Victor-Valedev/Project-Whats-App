@@ -1,5 +1,6 @@
 package com.victor.projectwhatsapp.Screens
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +20,25 @@ class ScreenLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        //Mudando tema do App
+        //Change App theme
+        themeconfig()
+
+        //Open the RegisterActivity
+        registerOpenActivity()
+
+
+
+    }
+
+    private fun registerOpenActivity() {
+        binding.textCadastro.setOnClickListener {
+            startActivity(
+                Intent(this, ScreenRegister::class.java)
+            )
+        }
+    }
+
+    private fun themeconfig() {
         binding.buttonTema.setOnCheckedChangeListener{ _, isChecked ->
 
             if(isChecked){
@@ -28,6 +47,5 @@ class ScreenLogin : AppCompatActivity() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
-
     }
 }
