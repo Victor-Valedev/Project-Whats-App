@@ -21,7 +21,7 @@ class ScreenLogin : AppCompatActivity() {
         setContentView(binding.root)
 
         //Change App theme
-        themeconfig()
+        themeConfig()
 
         //Open the RegisterActivity
         registerOpenActivity()
@@ -38,9 +38,8 @@ class ScreenLogin : AppCompatActivity() {
         }
     }
 
-    private fun themeconfig() {
+    private fun themeConfig() {
         binding.buttonTema.setOnCheckedChangeListener{ _, isChecked ->
-
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }else{
