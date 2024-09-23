@@ -2,6 +2,7 @@ package com.victor.projectwhatsapp.Screens
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.firestore.core.ComponentProvider.Configuration
 import com.victor.projectwhatsapp.MainActivity
 import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ActivityScreenLoginBinding
@@ -38,7 +40,7 @@ class ScreenLogin : AppCompatActivity() {
         //Open the RegisterActivity
         registerOpenActivity()
 
-        //firebaseAuth.signOut()
+        firebaseAuth.signOut()
 
     }
 
@@ -86,6 +88,7 @@ class ScreenLogin : AppCompatActivity() {
                 errorUserInvalidate.printStackTrace()
                 showMessage("E-mail não cadastrado!")
             }catch (errorInvalidateCredentials: FirebaseAuthInvalidCredentialsException){
+                errorInvalidateCredentials.printStackTrace()
                 showMessage("E-mail ou senha estão incorretos!")
             }
         }
@@ -113,7 +116,14 @@ class ScreenLogin : AppCompatActivity() {
 
     }
 
+    private fun isDarkThemeOn():Boolean{
+        val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES
+    }
+
     private fun themeConfig() {
+        binding.buttonTema.isChecked = isDarkThemeOn()
+
         binding.buttonTema.setOnCheckedChangeListener{ _, isChecked ->
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

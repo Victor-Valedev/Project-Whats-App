@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.victor.projectwhatsapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,11 +14,21 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val firebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        initializeToolBar()
+    }
 
-
-
+    private fun initializeToolBar() {
+        val toolBar = binding.toolBarMain.tbPrincipal
+        setSupportActionBar(toolBar)
+        supportActionBar?.apply {
+            title = "WhatsApp"
+        }
     }
 }
