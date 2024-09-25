@@ -2,10 +2,34 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.ProjectWhatsApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
-        <item name="colorPrimary">@color/greenPrimary</item>
+        <!--Colors Primary-->
+        <item name="colorPrimary">#075E54</item>
+        <item name="colorPrimaryDark">#128C7E</item>
+        <item name="colorAccent">#25D366</item>
+
+        <!-- Colors of text and backgrouns -->
+        <item name="android:colorBackground">#FFFFFF</item>
+        <item name="android:textColorPrimary">#000000</item>
+        <item name="android:textColorSecondary">#757575</item>
+
+        <!-- StatusBar e NavigationBar -->
+        <item name="android:statusBarColor">#128C7E</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+
+        <item name="buttonStyle">@style/Widget.Button.Light</item>
+        
+        <item name="actionOverflowButtonStyle">@style/ActionOverFlowButton</item>
     </style>
 
+    <style name="Widget.Button.Light" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="backgroundTint">#25D366</item>
+    </style>
+    
+    <style name="ActionOverFlowButton" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="tint">@color/white</item>
+    </style>
+    
     <style name="Theme.ProjectWhatsApp" parent="Base.Theme.ProjectWhatsApp" />
 </resources>

@@ -1,19 +1,14 @@
 package com.victor.projectwhatsapp.Screens
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Switch
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.firestore.core.ComponentProvider.Configuration
 import com.victor.projectwhatsapp.MainActivity
-import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ActivityScreenLoginBinding
 import com.victor.projectwhatsapp.utils.showMessage
 
@@ -30,9 +25,15 @@ class ScreenLogin : AppCompatActivity() {
         FirebaseAuth.getInstance()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+
+
+
+        applySavedTheme()
 
         //Change App theme
         themeConfig()
@@ -40,18 +41,31 @@ class ScreenLogin : AppCompatActivity() {
         //Open the RegisterActivity
         registerOpenActivity()
 
-        firebaseAuth.signOut()
+        //firebaseAuth.signOut()
 
     }
+
+    private fun applySavedTheme() {
+        val sharedPref = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        val isDarkMode = sharedPref.getBoolean("isDarkMode", false)
+
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
+
 
     override fun onStart() {
         super.onStart()
         checkCurrentUser()
     }
 
+
     private fun checkCurrentUser() {
         val currentUser = firebaseAuth.currentUser
-        if(currentUser != null){
+        if (currentUser != null) {
             startActivity(
                 Intent(this, MainActivity::class.java)
             )
@@ -65,7 +79,7 @@ class ScreenLogin : AppCompatActivity() {
             )
         }
         binding.btnLogar.setOnClickListener {
-            if(validateFields()){
+            if (validateFields()) {
                 enterUser()
             }
         }
@@ -78,16 +92,16 @@ class ScreenLogin : AppCompatActivity() {
         ).addOnSuccessListener {
             showMessage("Logado com sucesso!")
             startActivity(
-                Intent(this,MainActivity::class.java)
+                Intent(this, MainActivity::class.java)
             )
         }.addOnFailureListener { error ->
 
             try {
-               throw error
-            }catch (errorUserInvalidate: FirebaseAuthInvalidUserException){
+                throw error
+            } catch (errorUserInvalidate: FirebaseAuthInvalidUserException) {
                 errorUserInvalidate.printStackTrace()
                 showMessage("E-mail não cadastrado!")
-            }catch (errorInvalidateCredentials: FirebaseAuthInvalidCredentialsException){
+            } catch (errorInvalidateCredentials: FirebaseAuthInvalidCredentialsException) {
                 errorInvalidateCredentials.printStackTrace()
                 showMessage("E-mail ou senha estão incorretos!")
             }
@@ -100,36 +114,48 @@ class ScreenLogin : AppCompatActivity() {
         email = binding.editLoginEmail.text.toString()
         senha = binding.editLoginSenha.text.toString()
 
-        if(email.isNotEmpty()){
+        if (email.isNotEmpty()) {
             binding.textInputLayoutLoginEmail.error = null
-            if(senha.isNotEmpty()){
+            if (senha.isNotEmpty()) {
                 binding.textInputLayoutSenha.error = null
                 return true
-            }else{
+            } else {
                 binding.textInputLayoutSenha.error = "Digite a sua senha!"
                 return false
             }
-        }else{
+        } else {
             binding.textInputLayoutLoginEmail.error = "Preencha o seu e-mail"
             return false
         }
 
     }
 
-    private fun isDarkThemeOn():Boolean{
-        val currentNightMode = resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK
-        return currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES
-    }
-
+    /*private fun isDarkThemeOn(): Boolean {
+        val sharedPref = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        return sharedPref.getBoolean("isDarkMode", false)
+    }*/
     private fun themeConfig() {
-        binding.buttonTema.isChecked = isDarkThemeOn()
 
-        binding.buttonTema.setOnCheckedChangeListener{ _, isChecked ->
-            if(isChecked){
+        //binding.buttonTema.isChecked = isDarkThemeOn()
+
+        binding.buttonTema.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }else{
+                saveThemePreference(true)
+            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                saveThemePreference(false)
             }
         }
     }
+
+    private fun saveThemePreference(isDarkMode: Boolean) {
+        val sharedPref = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putBoolean("isDarkMode", isDarkMode)
+            apply()
+        }
+    }
+
+
 }
