@@ -6,7 +6,10 @@
     <!--Colors Theme App-->
     <color name="greenPrimary">#0F8068</color>
     <color name="darkGreen">#16A984</color>
-<!--<color name="green">#FFFFFFFF</color>-->
+    <color name="colorPrimary">#075E54</color>
+    <color name="grayColor">#D1D1D1</color>
+
+    <!--<color name="green">#FFFFFFFF</color>-->
 <!--<color name="green">#FFFFFFFF</color>-->
 
 </resources>
