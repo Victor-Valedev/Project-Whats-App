@@ -6,24 +6,33 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_verde"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectWhatsApp"
         tools:targetApi="31">
         <activity
+            android:name=".Screens.ScreenLogin"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name=".Screens.ProfileUserActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".Screens.ScreenRegister"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:parentActivityName=".Screens.ScreenLogin" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".Screens.ScreenLogin"
+            android:name=".Screens.SplashScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
