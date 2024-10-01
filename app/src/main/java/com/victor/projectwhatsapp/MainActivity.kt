@@ -1,12 +1,16 @@
 package com.victor.projectwhatsapp
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
@@ -25,13 +29,17 @@ class MainActivity : AppCompatActivity() {
         FirebaseAuth.getInstance()
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         initializeToolBar()
 
         initializeNavigation()
+
     }
+
+
 
     private fun initializeNavigation() {
 
@@ -92,7 +100,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
-        AlertDialog.Builder(this)
+        val dialogPersonalization = AlertDialog.Builder(this)
             .setTitle("Deslogar")
             .setMessage("Deseja realmente sair?")
             .setNegativeButton("Não") { dialog, position -> }
@@ -104,8 +112,13 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
             .create()
-            .show()
 
+        dialogPersonalization.setOnShowListener {
+            dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
+            dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
+        }
+
+        dialogPersonalization.show()
     }
 
 

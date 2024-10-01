@@ -31,5 +31,9 @@
         <item name="tint">@color/white</item>
     </style>
     
+    <style name="CirleShape">
+        <item name="cornerSize">50%</item>
+    </style>
+    
     <style name="Theme.ProjectWhatsApp" parent="Base.Theme.ProjectWhatsApp" />
 </resources>
