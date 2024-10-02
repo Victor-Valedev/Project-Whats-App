@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageProfile"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="95dp"
@@ -36,8 +36,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+        app:layout_constraintEnd_toEndOf="@+id/imageProfile"
         app:srcCompat="@drawable/ic_addgallery_24"
         app:tint="@color/white" />
 
@@ -51,9 +51,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3">
+        app:layout_constraintTop_toBottomOf="@+id/imageProfile">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNameProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Digite seu nome" />
