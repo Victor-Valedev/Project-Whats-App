@@ -1,6 +1,7 @@
 package com.victor.projectwhatsapp
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -110,9 +111,20 @@ class MainActivity : BaseClassNetwork() {
             }
             .create()
 
-        dialogPersonalization.setOnShowListener {
-            dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
-            dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when(nightModeFlags){
+            Configuration.UI_MODE_NIGHT_YES -> {
+                dialogPersonalization.setOnShowListener {
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
+                }
+            }
+            Configuration.UI_MODE_NIGHT_NO -> {
+                dialogPersonalization.setOnShowListener {
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.black))
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.black))
+                }
+            }
         }
 
         dialogPersonalization.show()
