@@ -19,11 +19,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
+import com.victor.projectwhatsapp.BaseClassNetwork
 import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ActivityProfileUserBinding
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ProfileUserActivity : AppCompatActivity() {
+class ProfileUserActivity : BaseClassNetwork() {
 
     private lateinit var binding: ActivityProfileUserBinding
 

@@ -16,7 +16,7 @@ import com.victor.projectwhatsapp.Screens.ScreenLogin
 import com.victor.projectwhatsapp.adapters.ViewPagerAdapter
 import com.victor.projectwhatsapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseClassNetwork() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)

@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.victor.projectwhatsapp.BaseClassNetwork
 import com.victor.projectwhatsapp.MainActivity
+import com.victor.projectwhatsapp.NoInternetActivity
 import com.victor.projectwhatsapp.databinding.ActivityScreenLoginBinding
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ScreenLogin : AppCompatActivity() {
+class ScreenLogin : BaseClassNetwork() {
 
     private val binding by lazy {
         ActivityScreenLoginBinding.inflate(layoutInflater)
@@ -30,7 +32,7 @@ class ScreenLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
+        //checkInternet()
 
 
         applySavedTheme()
@@ -44,6 +46,14 @@ class ScreenLogin : AppCompatActivity() {
         //firebaseAuth.signOut()
 
     }
+
+    /*private fun checkInternet() {
+        if (!isNetworkAvailable()) {
+            val intent = Intent(this, NoInternetActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }*/
 
     private fun applySavedTheme() {
         val sharedPref = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)

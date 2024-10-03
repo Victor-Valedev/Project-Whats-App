@@ -8,12 +8,13 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
+import com.victor.projectwhatsapp.BaseClassNetwork
 import com.victor.projectwhatsapp.MainActivity
 import com.victor.projectwhatsapp.databinding.ActivityScreenRegisterBinding
 import com.victor.projectwhatsapp.model.User
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ScreenRegister : AppCompatActivity() {
+class ScreenRegister : BaseClassNetwork() {
 
     private val binding by lazy {
         ActivityScreenRegisterBinding.inflate(layoutInflater)
