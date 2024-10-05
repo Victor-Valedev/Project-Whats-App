@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso
 import com.victor.projectwhatsapp.BaseClassNetwork
 import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ActivityProfileUserBinding
+import com.victor.projectwhatsapp.utils.ViewUtils
 import com.victor.projectwhatsapp.utils.showMessage
 
 class ProfileUserActivity : BaseClassNetwork() {
@@ -84,21 +85,10 @@ class ProfileUserActivity : BaseClassNetwork() {
         recoveredDataUserStart()
     }
 
-    private fun progressBarGone() {
-        Handler().postDelayed({
-            progressBar.visibility = View.GONE
-        }, 3000)
-    }
-
-    private fun progressBarVisible() {
-        Handler().postDelayed({
-            progressBar.visibility = View.VISIBLE
-        }, 1000)
-    }
 
     private fun recoveredDataUserStart() {
 
-        progressBarVisible()
+        ViewUtils.progressBarVisible(progressBar)
         val idUser = firebaseAuth.currentUser?.uid
         if (idUser != null) {
             firestore
@@ -112,7 +102,7 @@ class ProfileUserActivity : BaseClassNetwork() {
                         val name = dataUser["nome"] as String
                         val photo = dataUser["foto"] as String
 
-                        progressBarGone()
+                        ViewUtils.progressBarGone(progressBar)
 
                         binding.editTextNameProfile.setText(name)
 
@@ -162,7 +152,7 @@ class ProfileUserActivity : BaseClassNetwork() {
     private fun uploadImageStorage(uri: Uri) {
 
         //images -> users -> idUser -> profile.jpg
-        progressBarVisible()
+        ViewUtils.progressBarVisible(progressBar)
         val idUser = firebaseAuth.currentUser?.uid
         if (idUser != null) {
             storage
@@ -172,7 +162,7 @@ class ProfileUserActivity : BaseClassNetwork() {
                 .child("profile.jpg")
                 .putFile(uri)
                 .addOnSuccessListener { task ->
-                    progressBarGone()
+                    ViewUtils.progressBarGone(progressBar)
                     showMessage("Sucesso ao fazer upload da imagem")
 
                     task.metadata
@@ -195,13 +185,13 @@ class ProfileUserActivity : BaseClassNetwork() {
     }
 
     private fun updateDataProfile(idUser: String, dataUser: Map<String, String>) {
-        progressBarVisible()
+        ViewUtils.progressBarVisible(progressBar)
         firestore
             .collection("users")
             .document(idUser)
             .update(dataUser)
             .addOnSuccessListener {
-                progressBarGone()
+                ViewUtils.progressBarGone(progressBar)
                 //showMessage("Sucesso ao atualizar perfil")
             }
             .addOnFailureListener {

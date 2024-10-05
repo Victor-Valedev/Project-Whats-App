@@ -3,15 +3,16 @@ package com.victor.projectwhatsapp.Screens
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.victor.projectwhatsapp.BaseClassNetwork
 import com.victor.projectwhatsapp.MainActivity
-import com.victor.projectwhatsapp.NoInternetActivity
 import com.victor.projectwhatsapp.databinding.ActivityScreenLoginBinding
+import com.victor.projectwhatsapp.utils.ViewUtils
 import com.victor.projectwhatsapp.utils.showMessage
 
 class ScreenLogin : BaseClassNetwork() {
@@ -27,13 +28,17 @@ class ScreenLogin : BaseClassNetwork() {
         FirebaseAuth.getInstance()
     }
 
+    private lateinit var progressBar: ProgressBar
+    private lateinit var buttonSingIn: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         //checkInternet()
-
+        progressBar = binding.progressBar2
+        buttonSingIn = binding.btnLogar
 
         applySavedTheme()
 
@@ -46,6 +51,7 @@ class ScreenLogin : BaseClassNetwork() {
         //firebaseAuth.signOut()
 
     }
+
 
     /*private fun checkInternet() {
         if (!isNetworkAvailable()) {
@@ -89,13 +95,20 @@ class ScreenLogin : BaseClassNetwork() {
             )
         }
         binding.btnLogar.setOnClickListener {
+            val originalTextButton = buttonSingIn.text.toString()
+            buttonSingIn.text = ""
+            ViewUtils.progressBarVisible(progressBar)
+
             if (validateFields()) {
-                enterUser()
+                enterUser(originalTextButton)
+            }else{
+                buttonSingIn.text = originalTextButton
+                ViewUtils.progressBarGone(progressBar)
             }
         }
     }
 
-    private fun enterUser() {
+    private fun enterUser(originalTextButton: String) {
 
         firebaseAuth.signInWithEmailAndPassword(
             email, senha
@@ -115,6 +128,9 @@ class ScreenLogin : BaseClassNetwork() {
                 errorInvalidateCredentials.printStackTrace()
                 showMessage("E-mail ou senha estão incorretos!")
             }
+        }.addOnCompleteListener {
+            ViewUtils.progressBarGone(progressBar)
+            buttonSingIn.text = originalTextButton
         }
 
     }

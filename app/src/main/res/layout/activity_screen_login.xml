@@ -115,4 +115,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogar" />
 
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="34dp"
+        android:layout_height="35dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btnLogar"
+        app:layout_constraintEnd_toEndOf="@+id/btnLogar"
+        app:layout_constraintStart_toStartOf="@+id/btnLogar"
+        app:layout_constraintTop_toTopOf="@+id/btnLogar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
