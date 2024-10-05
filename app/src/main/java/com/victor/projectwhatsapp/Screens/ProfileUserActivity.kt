@@ -149,7 +149,7 @@ class ProfileUserActivity : BaseClassNetwork() {
                     )
                     updateDataProfile(idUser, dataUser)
                 }
-
+                showMessage("Alterações salvas")
 
             } else {
                 showMessage("Preencha um nome para atualizar")
