@@ -5,27 +5,20 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.view.View
 import android.widget.ProgressBar
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-import com.victor.projectwhatsapp.BaseClassNetwork
-import com.victor.projectwhatsapp.R
+import com.victor.projectwhatsapp.BaseNetworkActivity
 import com.victor.projectwhatsapp.databinding.ActivityProfileUserBinding
 import com.victor.projectwhatsapp.utils.ViewUtils
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ProfileUserActivity : BaseClassNetwork() {
+class ProfileUserActivity : BaseNetworkActivity() {
 
     private lateinit var binding: ActivityProfileUserBinding
 

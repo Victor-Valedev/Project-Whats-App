@@ -6,7 +6,7 @@ import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-open class BaseClassNetwork : AppCompatActivity(){
+open class BaseNetworkActivity : AppCompatActivity(){
 
 
         override fun onCreate(savedInstanceState: Bundle?) {

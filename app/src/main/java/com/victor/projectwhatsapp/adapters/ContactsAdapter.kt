@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
+import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ItemContactBinding
 import com.victor.projectwhatsapp.model.User
 
@@ -25,19 +26,12 @@ class ContactsAdapter() : Adapter<ContactsAdapter.ContactViewHolder>(){
 
         fun bind(user: User) {
             binding.textContatoNome.text = user.nome
-            if (!user.foto.isNullOrEmpty()) {
+            if (user.foto.isNullOrEmpty()) {
+                binding.imageContatoList.setImageResource(R.drawable.perfil)
+            } else {
                 Picasso.get()
                     .load(user.foto)
                     .into(binding.imageContatoList)
-            } else {
-                // Referência ao drawable usando o contexto
-                val drawableId = binding.root.context.resources.getIdentifier(
-                    "perfil.jpeg", "drawable", binding.root.context.packageName
-                )
-
-                if (drawableId != 0) {
-                    binding.imageContatoList.setImageResource(drawableId)
-                }
             }
         }
     }

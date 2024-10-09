@@ -2,6 +2,7 @@ package com.victor.projectwhatsapp.Screens
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
@@ -9,13 +10,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.victor.projectwhatsapp.BaseClassNetwork
+import com.victor.projectwhatsapp.BaseNetworkActivity
 import com.victor.projectwhatsapp.MainActivity
 import com.victor.projectwhatsapp.databinding.ActivityScreenLoginBinding
 import com.victor.projectwhatsapp.utils.ViewUtils
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ScreenLogin : BaseClassNetwork() {
+class ScreenLogin : BaseNetworkActivity() {
 
     private val binding by lazy {
         ActivityScreenLoginBinding.inflate(layoutInflater)
@@ -31,8 +32,8 @@ class ScreenLogin : BaseClassNetwork() {
     private lateinit var progressBar: ProgressBar
     private lateinit var buttonSingIn: Button
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
+        applySavedTheme()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -40,7 +41,7 @@ class ScreenLogin : BaseClassNetwork() {
         progressBar = binding.progressBar2
         buttonSingIn = binding.btnLogar
 
-        applySavedTheme()
+
 
         //Change App theme
         themeConfig()
@@ -91,7 +92,7 @@ class ScreenLogin : BaseClassNetwork() {
     private fun registerOpenActivity() {
         binding.textCadastro.setOnClickListener {
             startActivity(
-                Intent(this, ScreenRegister::class.java)
+                Intent(this, ScreenRegisterActivity::class.java)
             )
         }
         binding.btnLogar.setOnClickListener {
@@ -117,6 +118,7 @@ class ScreenLogin : BaseClassNetwork() {
             startActivity(
                 Intent(this, MainActivity::class.java)
             )
+            finish()
         }.addOnFailureListener { error ->
 
             try {
@@ -156,13 +158,13 @@ class ScreenLogin : BaseClassNetwork() {
 
     }
 
-    /*private fun isDarkThemeOn(): Boolean {
+    private fun isDarkThemeOn(): Boolean {
         val sharedPref = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("isDarkMode", false)
-    }*/
+    }
     private fun themeConfig() {
 
-        //binding.buttonTema.isChecked = isDarkThemeOn()
+        binding.buttonTema.isChecked = isDarkThemeOn()
 
         binding.buttonTema.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

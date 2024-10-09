@@ -33,7 +33,7 @@
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Screens.ScreenRegister"
+            android:name=".Screens.ScreenRegisterActivity"
             android:exported="false"
             android:parentActivityName=".Screens.ScreenLogin"
             android:screenOrientation="portrait" />

@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import com.google.android.material.tabs.TabLayoutMediator
@@ -17,7 +16,7 @@ import com.victor.projectwhatsapp.Screens.ScreenLogin
 import com.victor.projectwhatsapp.adapters.ViewPagerAdapter
 import com.victor.projectwhatsapp.databinding.ActivityMainBinding
 
-class MainActivity : BaseClassNetwork() {
+class MainActivity : BaseNetworkActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
