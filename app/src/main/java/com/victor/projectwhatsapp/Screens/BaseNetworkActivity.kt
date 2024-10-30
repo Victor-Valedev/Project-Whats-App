@@ -1,4 +1,4 @@
-package com.victor.projectwhatsapp
+package com.victor.projectwhatsapp.Screens
 
 import android.content.Context
 import android.content.Intent

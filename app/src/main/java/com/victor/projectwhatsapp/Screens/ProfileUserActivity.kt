@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-import com.victor.projectwhatsapp.BaseNetworkActivity
 import com.victor.projectwhatsapp.databinding.ActivityProfileUserBinding
 import com.victor.projectwhatsapp.utils.ViewUtils
 import com.victor.projectwhatsapp.utils.showMessage

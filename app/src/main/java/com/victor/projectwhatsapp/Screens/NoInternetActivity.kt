@@ -1,4 +1,4 @@
-package com.victor.projectwhatsapp
+package com.victor.projectwhatsapp.Screens
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ActivityNoInternetBinding
 import com.victor.projectwhatsapp.utils.showMessage
 

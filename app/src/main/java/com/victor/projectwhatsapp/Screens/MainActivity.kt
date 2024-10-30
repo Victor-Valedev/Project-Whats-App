@@ -1,4 +1,4 @@
-package com.victor.projectwhatsapp
+package com.victor.projectwhatsapp.Screens
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -11,8 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
-import com.victor.projectwhatsapp.Screens.ProfileUserActivity
-import com.victor.projectwhatsapp.Screens.ScreenLogin
+import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.adapters.ViewPagerAdapter
 import com.victor.projectwhatsapp.databinding.ActivityMainBinding
 
@@ -104,7 +103,7 @@ class MainActivity : BaseNetworkActivity() {
             .setPositiveButton("Sim") { dialog, position ->
                 firebaseAuth.signOut()
                 startActivity(
-                    Intent(applicationContext, ScreenLogin::class.java)
+                    Intent(applicationContext, ScreenLoginActivity::class.java)
                 )
                 finish()
             }
@@ -114,14 +113,22 @@ class MainActivity : BaseNetworkActivity() {
         when(nightModeFlags){
             Configuration.UI_MODE_NIGHT_YES -> {
                 dialogPersonalization.setOnShowListener {
-                    dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
-                    dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.white))
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this,
+                        R.color.white
+                    ))
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this,
+                        R.color.white
+                    ))
                 }
             }
             Configuration.UI_MODE_NIGHT_NO -> {
                 dialogPersonalization.setOnShowListener {
-                    dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.black))
-                    dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.black))
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this,
+                        R.color.black
+                    ))
+                    dialogPersonalization.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this,
+                        R.color.black
+                    ))
                 }
             }
         }

@@ -21,24 +21,30 @@
         android:theme="@style/Theme.ProjectWhatsApp"
         tools:targetApi="31">
         <activity
-            android:name=".NoInternetActivity"
+            android:name=".Screens.MessageActivity"
+            android:parentActivityName=".Screens.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".Screens.ScreenLogin"
+            android:name=".Screens.NoInternetActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".Screens.ScreenLoginActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Screens.ProfileUserActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Screens.MainActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Screens.ScreenRegisterActivity"
             android:exported="false"
-            android:parentActivityName=".Screens.ScreenLogin"
+            android:parentActivityName=".Screens.ScreenLoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Screens.MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

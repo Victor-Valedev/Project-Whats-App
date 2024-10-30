@@ -2,7 +2,6 @@ package com.victor.projectwhatsapp.Screens
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
@@ -10,13 +9,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.victor.projectwhatsapp.BaseNetworkActivity
-import com.victor.projectwhatsapp.MainActivity
 import com.victor.projectwhatsapp.databinding.ActivityScreenLoginBinding
 import com.victor.projectwhatsapp.utils.ViewUtils
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ScreenLogin : BaseNetworkActivity() {
+class ScreenLoginActivity : BaseNetworkActivity() {
 
     private val binding by lazy {
         ActivityScreenLoginBinding.inflate(layoutInflater)

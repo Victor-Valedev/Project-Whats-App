@@ -10,7 +10,9 @@ import com.victor.projectwhatsapp.R
 import com.victor.projectwhatsapp.databinding.ItemContactBinding
 import com.victor.projectwhatsapp.model.User
 
-class ContactsAdapter() : Adapter<ContactsAdapter.ContactViewHolder>(){
+class ContactsAdapter(
+    private val onClick: (User) -> Unit
+) : Adapter<ContactsAdapter.ContactViewHolder>(){
 
     private var listContacts = emptyList<User>()
 
@@ -33,6 +35,11 @@ class ContactsAdapter() : Adapter<ContactsAdapter.ContactViewHolder>(){
                     .load(user.foto)
                     .into(binding.imageContatoList)
             }
+
+            binding.clItemContact.setOnClickListener {
+                onClick(user)
+            }
+
         }
     }
 

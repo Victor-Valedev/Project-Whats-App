@@ -1,5 +1,6 @@
 package com.victor.projectwhatsapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,9 +14,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.toObject
 import com.victor.projectwhatsapp.R
+import com.victor.projectwhatsapp.Screens.MessageActivity
 import com.victor.projectwhatsapp.adapters.ContactsAdapter
 import com.victor.projectwhatsapp.databinding.FragmentContactsBinding
 import com.victor.projectwhatsapp.model.User
+import com.victor.projectwhatsapp.utils.Constants
 
 
 class ContactsFragment : Fragment() {
@@ -41,7 +44,12 @@ class ContactsFragment : Fragment() {
             inflater, container, false
         )
 
-        contactsAdapter = ContactsAdapter()
+        contactsAdapter = ContactsAdapter { user ->
+            val intent = Intent(context, MessageActivity::class.java)
+            intent.putExtra("recipientData", user)
+            intent.putExtra("origin", Constants.ORIGIN_CONTACT)
+            startActivity(intent)
+        }
         binding.rvContatos.adapter = contactsAdapter
 
         binding.rvContatos.layoutManager = LinearLayoutManager(context)
