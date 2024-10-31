@@ -7,12 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import com.squareup.picasso.Picasso
 import com.victor.projectwhatsapp.R
+import com.victor.projectwhatsapp.adapters.ConversationsAdapter
 import com.victor.projectwhatsapp.databinding.ActivityMessageBinding
 import com.victor.projectwhatsapp.model.Message
 import com.victor.projectwhatsapp.model.User
@@ -34,6 +36,7 @@ class MessageActivity : AppCompatActivity() {
     private lateinit var listenerRegistration: ListenerRegistration
 
     private var recipientData: User? = null
+    private lateinit var conversationsAdapter: ConversationsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,18 @@ class MessageActivity : AppCompatActivity() {
         recoverRecipientUserData()
         initializeToolBar()
         initializeClicksEvents()
+        initializeRecyclerView()
         initializeListeners()
+    }
+
+    private fun initializeRecyclerView() {
+
+        with(binding){
+            conversationsAdapter = ConversationsAdapter()
+            rvMessage.adapter = conversationsAdapter
+            rvMessage.layoutManager = LinearLayoutManager(applicationContext)
+        }
+
     }
 
     override fun onDestroy() {
@@ -83,6 +97,7 @@ class MessageActivity : AppCompatActivity() {
                     //lista
                     if(listMessages.isNotEmpty()){
                         //carregar dados adapter
+                        conversationsAdapter.addListMessage(listMessages)
                     }
 
                 }
@@ -97,6 +112,7 @@ class MessageActivity : AppCompatActivity() {
         binding.fabSendMenssage.setOnClickListener {
             val message = binding.editMessage.text.toString()
             saveMessage(message)
+            binding.editMessage.text?.clear()
         }
 
     }

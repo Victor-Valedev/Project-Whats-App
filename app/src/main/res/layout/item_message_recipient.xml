@@ -8,11 +8,12 @@
 
     <TextView
         android:id="@+id/textMessageRecipient"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/recipient_conversation_background"
         android:padding="8dp"
         android:text="Mussum Ipsum, cacilds vidis litro abertis. Negão é teu passadis, eu sou faxa pretis. Tá deprimidis, eu conheço uma cachacis que pode alegrar sua vidis. Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis!?"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
