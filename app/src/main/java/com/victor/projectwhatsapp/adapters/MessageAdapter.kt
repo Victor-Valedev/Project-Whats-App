@@ -10,7 +10,7 @@ import com.victor.projectwhatsapp.databinding.ItemMessageSenderBinding
 import com.victor.projectwhatsapp.model.Message
 import com.victor.projectwhatsapp.utils.Constants
 
-class ConversationsAdapter : Adapter<ViewHolder>() {
+class MessageAdapter : Adapter<ViewHolder>() {
 
     private var listMessages = emptyList<Message>()
     fun addListMessage(list: List<Message>){

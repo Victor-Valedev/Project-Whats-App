@@ -10,7 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import com.squareup.picasso.Picasso
-import com.victor.projectwhatsapp.adapters.ConversationsAdapter
+import com.victor.projectwhatsapp.adapters.MessageAdapter
 import com.victor.projectwhatsapp.databinding.ActivityMessageBinding
 import com.victor.projectwhatsapp.model.Conversation
 import com.victor.projectwhatsapp.model.Message
@@ -35,7 +35,7 @@ class MessageActivity : AppCompatActivity() {
     private var recipientData: User? = null
     private var senderData: User? = null
 
-    private lateinit var conversationsAdapter: ConversationsAdapter
+    private lateinit var conversationsAdapter: MessageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class MessageActivity : AppCompatActivity() {
     private fun initializeRecyclerView() {
 
         with(binding){
-            conversationsAdapter = ConversationsAdapter()
+            conversationsAdapter = MessageAdapter()
             rvMessage.adapter = conversationsAdapter
             rvMessage.layoutManager = LinearLayoutManager(applicationContext)
         }
