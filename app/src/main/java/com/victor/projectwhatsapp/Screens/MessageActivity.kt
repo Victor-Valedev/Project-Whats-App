@@ -228,19 +228,10 @@ class MessageActivity : AppCompatActivity() {
         val extras = intent.extras
         if(extras != null){
 
-            val origin = extras.getString("origin")
-            if(origin == Constants.ORIGIN_CONTACT){
-
-                recipientData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    extras.getParcelable("recipientData", User::class.java)
-                }else{
-                    extras.getParcelable("recipientData")
-                }
-
-            }else if(origin == Constants.ORIGIN_CONVERSATION){
-                //recuperar dados da conversa
-
-
+            recipientData = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                extras.getParcelable("recipientData", User::class.java)
+            }else{
+                extras.getParcelable("recipientData")
             }
 
         }

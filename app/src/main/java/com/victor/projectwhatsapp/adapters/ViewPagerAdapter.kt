@@ -6,7 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.victor.projectwhatsapp.fragments.ContactsFragment
 import com.victor.projectwhatsapp.fragments.StatusFragment
-import com.victor.projectwhatsapp.fragments.TalksFragment
+import com.victor.projectwhatsapp.fragments.ConversationFragment
 
 class ViewPagerAdapter(
     private val tabs: List<String>,
@@ -22,6 +22,6 @@ class ViewPagerAdapter(
             1 -> return StatusFragment()
             2 -> return ContactsFragment()
         }
-        return TalksFragment()
+        return ConversationFragment()
     }
 }

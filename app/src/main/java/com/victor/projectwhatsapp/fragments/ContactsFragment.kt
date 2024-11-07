@@ -47,7 +47,7 @@ class ContactsFragment : Fragment() {
         contactsAdapter = ContactsAdapter { user ->
             val intent = Intent(context, MessageActivity::class.java)
             intent.putExtra("recipientData", user)
-            intent.putExtra("origin", Constants.ORIGIN_CONTACT)
+            //intent.putExtra("origin", Constants.ORIGIN_CONTACT)
             startActivity(intent)
         }
         binding.rvContatos.adapter = contactsAdapter
