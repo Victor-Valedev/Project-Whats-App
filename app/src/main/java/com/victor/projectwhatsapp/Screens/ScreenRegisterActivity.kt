@@ -2,18 +2,16 @@ package com.victor.projectwhatsapp.Screens
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
-import com.victor.projectwhatsapp.MainActivity
 import com.victor.projectwhatsapp.databinding.ActivityScreenRegisterBinding
 import com.victor.projectwhatsapp.model.User
 import com.victor.projectwhatsapp.utils.showMessage
 
-class ScreenRegister : AppCompatActivity() {
+class ScreenRegisterActivity : BaseNetworkActivity() {
 
     private val binding by lazy {
         ActivityScreenRegisterBinding.inflate(layoutInflater)
@@ -96,6 +94,7 @@ class ScreenRegister : AppCompatActivity() {
                 startActivity(
                     Intent(applicationContext, MainActivity::class.java)
                 )
+                finish()
             }.addOnFailureListener {
                 showMessage("Erro ao fazer seu cadastro!")
             }
